@@ -23,6 +23,8 @@ public class WebStoreApplication {
 		SpringApplication.run(WebStoreApplication.class, args);
 	}
 	
+	
+	
 	@Bean
 	public CommandLineRunner demo(UmsMemberRepository repository) {
 		return (args) -> {
@@ -36,8 +38,13 @@ public class WebStoreApplication {
 			Example<UmsMember> example = Example.of(member, customExampleMatcher);
 			 
 		    Optional<UmsMember> actual = repository.findOne(example);
+		    if(actual.isPresent()) {
+		    	System.out.println(actual.get().toString());
+		    }
 		 
 		};
 	}
+	
+	
 
 }
